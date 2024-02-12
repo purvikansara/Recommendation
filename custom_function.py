@@ -640,3 +640,49 @@ def get_ngram_measures_finder(tokens, ngrams=2, get_scores_df=False, measure='ra
         return df_ngrams.head(top_n)
     else:
         return df_ngrams
+
+import os
+def create_directories_from_paths(nested_dict):
+    """OpenAI. (2023). ChatGPT [Large language model]. https://chat.openai.com 
+    Recursively create directories for file paths in a nested dictionary.
+    Parameters:
+    nested_dict (dict): The nested dictionary containing file paths.
+    """
+    for key, value in nested_dict.items():
+        if isinstance(value, dict):
+            # If the value is a dictionary, recurse into it
+            create_directories_from_paths(value)
+        elif isinstance(value, str):
+            # If the value is a string, treat it as a file path and get the directory path
+            directory_path = os.path.dirname(value)
+            # If the directory path is not empty and the directory does not exist, create it
+            if directory_path and not os.path.exists(directory_path):
+                os.makedirs(directory_path)
+                print(f"Directory created: {directory_path}")
+
+def plot_group_ngrams( low_ngram_scores, high_ngram_scores, 
+                       plot_col_low="low score",top_n=20,
+                      plot_col_high="high score",figsize=(12, 8),):
+    # Get top n ngrams for both groups (set index for easier pandas plotting)
+    top_n_ngrams_high = high_ngram_scores.set_index("high ngram").head(top_n)
+    top_n_ngrams_low = low_ngram_scores.set_index("low ngram").head(top_n)
+
+    ## Plot the ngram frequencies
+    fig, axes = plt.subplots(ncols=2, figsize=figsize)
+    #
+    top_n_ngrams_high[plot_col_high].sort_values().plot(
+        kind="barh", title="High-Rating Ngram Frequency", ax=axes[0], color="green"
+    )
+
+    top_n_ngrams_low[plot_col_low].sort_values().plot(
+        kind="barh", title="Low-Rating Ngram Frequency", color="crimson", ax=axes[1]
+    )
+    for ax in axes:
+        ax.spines["top"].set_visible(False)  
+        ax.spines["right"].set_visible(False)  
+
+    fig.suptitle("Comparing Bigrams", y=0.95, fontsize="large")
+    fig.subplots_adjust(top=0.85)  
+    fig.tight_layout(pad=3.0) 
+   
+    return fig

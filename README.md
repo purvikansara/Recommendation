@@ -1,16 +1,21 @@
 # Movie Analysis and Recommendation
 
-<img class="centered-image" src="images/tmdb.png" alt="IMDB Logo" style="width: auto; height: 50px;"> 
+<p align="center">
+  <img src="images/tmdb.png" width="200" alt="Image 1" style="margin-right: 50px;" />
+  <img src="images/unsplash_movie.jpeg" width="400" alt="Image 2" />
+</p>
+
 
 - API source : [TMDB's API](https://www.themoviedb.org/).  
 - Thanks TMDB for free API data
+
 
 ## Business Problem
 
 This project is focused on utilizing data sciece methodologies to process and analyze a comprehensive dataset sourced from IMDB. It is enhanced with financial information retrieved through TMDB's API.The ultimate goal is to perform Extract, Transform, Load (ETL) operations on the raw data and building a MySQL database and export it into a set of CSV files. Leveraging machine learning models and hypothesis testing, goal is to extract valuable insights for stakeholders, providing guidance on strategies for achieving success in the realm of filmmaking with recommendations.
 
-<img class="centered-image" src="images/unsplash_movie.jpeg" alt="movie" style="width: auto; height: 50px;"> 
-(https://www.istockphoto.com/photo/35mm-film-strip-gm1298343176-391220638?phrase=film)
+<img class="centered-image" src="images/unsplash_movie.jpeg" alt="movie" style="width: auto; height: 50px;">
+[image source](https://www.istockphoto.com/photo/35mm-film-strip-gm1298343176-391220638?phrase=film/)
 
 ## [Data Dictionaries](https://datasets.imdbws.com/)
 From IMDB's public datasets following data is downloaded and processed based on stakeholders requirements. Perticularly it includes information about movies and its ratings with some financial information like MPAA rating, genre, budget, revenue etc.
@@ -60,3 +65,9 @@ From IMDB's public datasets following data is downloaded and processed based on 
 - `runtime`: runtime of the movie in minutes
 - `spoken_languages`: languages spoken in the movie
 - `status`: current status of the movie (e.g., Released, Post Production)
+## Exploratory Data Analysis
+### Average revenue by Certification
+<img class="centered-image" src="images/avg_revenue_by_certification.png" alt="avg_revenue_by_certification" style="width: auto; ">
+
+### Average budget by Certification
+<img class="centered-image" src="images/avg_budget_by_certification.png" alt="avg_budget_by_certification" style="width: auto; ">

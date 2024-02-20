@@ -686,3 +686,10 @@ def plot_group_ngrams( low_ngram_scores, high_ngram_scores,
     fig.tight_layout(pad=3.0) 
    
     return fig
+
+# def function for millions ($)
+def hundred_m(x,pos):
+    """function for use with matplotlib FuncFormatter -  formats revenue in millions"""
+    return f"${x/1000000:,.0f}M"
+
+# function test

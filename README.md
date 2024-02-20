@@ -66,8 +66,64 @@ From IMDB's public datasets following data is downloaded and processed based on 
 - `spoken_languages`: languages spoken in the movie
 - `status`: current status of the movie (e.g., Released, Post Production)
 ## Exploratory Data Analysis
-### Average revenue by Certification
+#### Average revenue by Certification
 <img class="centered-image" src="images/avg_revenue_by_certification.png" alt="avg_revenue_by_certification" style="width: auto; ">
 
 ### Average budget by Certification
 <img class="centered-image" src="images/avg_budget_by_certification.png" alt="avg_budget_by_certification" style="width: auto; ">
+
+## Hypothesis Testing
+
+### Does MPAA ratings of movie affect the revenue?
+
+- **`Hypothesis`**
+    - ($H_0$) Null Hypothesis : The MPAA rating does not affect its revenue.
+    - ($H_A$) Alternative Hypothesis : The MPAA rating of a movie does affect its revenue
+
+- **`Select the right test based on data`**
+    - 'revenue' (numeric)
+    - 'certification' (categorical)
+    - '2 groups'
+
+- **`Test`**
+    -  One Way ANOVA and/or Tukey
+  
+- **`ANOVA Assumptions`**
+    - No significant outliers
+    - Normality
+    - Equal variance
+ 
+- Significance level 0.05
+
+**Outliers** - Removed from both the groups
+
+**Normality Test**
+
+<p align="left">
+  <img src="images/q1_hypothesis_normality.png" alt="normality.png">
+</p>
+
+- Assumption of Normality failed though, with sufficient samples in each group we can pass the test
+
+**Equal Variance**
+
+<p align="left">
+  <img src="images/q1_hypothesis_equal_variance.png" alt="equal variance">
+</p>
+
+As we failed the assumtion of equal variance , we will use non parametric Kruskal Wallis instead of one-way ANOVA.
+
+<p align="left">
+  <img src="images/q1_hypothesis_kruskal.png" alt="kruskal">
+</p>
+
+**Post-Hoc Tukey Comparisions**
+
+<p align="left">
+  <img src="images/q1_hypothesis_tukey.png" alt="Tukey">
+</p>
+
+**Based on the Tukey's comparision we can conclude that PG moveis make most revenue. NC-17 movies and R rated movies make significantly less as compared to other.**
+
+
+
